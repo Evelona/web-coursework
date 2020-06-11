@@ -50,6 +50,10 @@ a {
     font-weight: 600;
 }
 
+input {
+    outline: none;
+}
+
 /* classes */
 
 
@@ -237,4 +241,41 @@ a {
     width: 285px;
     height: 154px;
     font-size: 25px;
+}
+
+/* Вход студента */
+
+.content-login-student {
+    position: relative;
+}
+
+.login-add-form {
+    flex-direction: column;
+    height: 378px;
+}
+
+/* Меню студента */
+
+.content-menu-student {
+    position: relative;
+}
+
+.student-number {
+    margin: 0;
+    position: absolute;
+    left: 387px;
+    top: 36px;
+    font-size: 25px;
+    font-weight: 400;
+    color: #F66D56;
+}
+
+.q-btn {
+    left: 7px;
+    top: 170px;
+}
+
+.new-q-btn {
+    left: 7px;
+    top: 315px;
 }

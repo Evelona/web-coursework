@@ -20,7 +20,7 @@ for (let i = 0; i < backButtons.length; i++) {
 }
 addButton.addEventListener("click", () => showContent('add'))
 listButton.addEventListener("click", () => showContent('list'))
-studButton.addEventListener("click", () => location.href='student.html')
+studButton.addEventListener("click", () => location.href='admin')
 
 
 
