@@ -1,0 +1,240 @@
+@font-face{
+    font-family: 'Exo2';
+    src: url('./fonts/Exo2-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'Exo2';
+    src: url('./fonts/Exo2-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'Exo2';
+    src: url('./fonts/Exo2-Light.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'Exo2';
+    src: url('./fonts/Exo2-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+
+body {
+    font-family: Exo2, sans-serif;
+    height: 1009px;
+    width: 1910px;
+    padding: 0;
+    margin: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+h3 {
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+/* classes */
+
+
+.hide {
+    display: none;
+}
+
+.logo {
+    position: absolute;
+    width: 513px;
+    height: 182px;
+    left: 0px;
+    top: 0px;
+    background-color: #F66D56;
+    color: white;
+    vertical-align: middle
+}
+
+.header{
+    margin: 58px auto;
+    text-align: center;
+    width: 513px;
+    height: 182px;
+    font-size: 50px;
+    font-weight: 400;
+}
+.content {
+    width: 905px;
+    height: 701px;
+    margin-left: 133px;
+    margin-top: 264px;
+
+}
+
+/* Вход */
+
+.content-open {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    
+    /* background: #C4C4C4; */
+}
+
+.girl {
+    background: url(./img/girl.png);
+    position: absolute;
+    width: 553px;
+    height: 829px;
+    left: 1106px;
+    top: 180px;
+}
+
+.girl-back {
+    background-color: #F66D56;
+    position: absolute;
+    width: 533px;
+    height: 891px;
+    left: 1205px;
+    top: 118px;
+}
+
+.btn {
+    position: absolute;
+    font-size: 25px;
+    background-color: #F66D56;
+    color: #f9f9f9;
+    border: none;
+    width: 449px;
+    height: 101px; 
+    cursor: pointer;
+    opacity: 0.5;
+    outline: none;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+.btn-light {
+    border: 3px solid #F66D56;
+    background-color: transparent;
+    color: #F66D56;
+}
+
+.open-btn {
+    left: 228px;
+    top: 128px;
+}
+
+.add-btn {
+    left: 228px;
+    top: 283px;
+}
+
+.sing-btn {
+    left: 228px;
+    top: 440px;
+}
+
+/* Список студентов */
+
+.content-list {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    
+    /* background: #C4C4C4; */
+}
+
+.content-title{
+    margin: 0;
+    position: absolute;
+    left: 7px;
+    top: 36px;
+    font-size: 25px;
+    font-weight: 400;
+    color: #F66D56;
+}
+
+.line {
+    position: absolute;
+    left: 4px;
+    top: 94.5px;
+    width: 621.01px;
+    height: 3px;
+    background-color: #F66D56;
+}
+
+.back-btn {
+    top: 550px;
+    left: 7px;
+}
+
+.stud-list {
+    position: absolute;
+    top: 100px;
+    left: 7px;
+    color: #F66D56;
+}
+
+.stud-list-element  {
+
+}
+
+/*Добвление студента */
+
+.content-add {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.add-form {
+    position: absolute;
+    top: 182px;
+    left: 3px;
+    width: 791px;
+    height: 154px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-input {
+    width: 438px;
+    height: 52px;
+    border: 3px solid #F66D56;
+    color: #F66D56;
+    margin-bottom: 50px;
+    font-size: 25px;
+    padding-left: 20px;
+}
+
+.add-select {
+    display: block;
+    width: 449px;
+    height: 52px;
+    border: 3px solid #F66D56;
+    font-size: 20px;
+    color: #F66D56;
+}
+
+.tall-btn {
+    position: static;
+    width: 285px;
+    height: 154px;
+    font-size: 25px;
+}

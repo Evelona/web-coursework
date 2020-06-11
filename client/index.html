@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=7 , initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Amazeriffic</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <p class="header">Университет НИО</p>
+        </div>
+        <p id='user-name'></p>
+    </header>
+
+    <div class="content">
+
+        <div id="content-open" class="content-tab content-open">
+            <button id="studen-list" class="btn btn-light open-btn">Открыть список студентов</button>
+            <button id="add-student" class="btn btn-light add-btn">Добавить студента</button>
+            <button id="sing-student" class="btn sing-btn">Войти как студент</button>
+        </div>
+
+        <div id="content-list" class="content-tab content-list hide">
+           <h2 class="content-title">Открыть список студентов</h2>
+           <div class="line"></div>
+           <ul id="stud-list" class="stud-list">
+               <h4 class="stud-list-heading">Программная Инженеря</h4>
+                <ul>
+                    <li class="stud-list-element">Тумби</li>
+                    <li class="stud-list-element">Тумби</li>
+                </ul>
+           </ul>
+           <button id="back-btn" class="btn btn-light back-btn">Назад</button>
+        </div>
+
+        <div id="content-add" class="content-tab content-add hide">
+            <h2 class="content-title">Добавить студента</h2>
+            <div class="line"></div>
+            <div class="add-form">
+                <div class="inputs">
+                    <input class="add-input" type="text" placeholder="ФИО">
+                    <select class="add-select">
+                        <option selected="selected">Выберите направление</option>
+                        <option value="msk">Программная Инженеря</option>
+                        <option value="spb">Информационная безопасность</option>
+                        <option value="other">Прикладная математика и информатика</option>
+                    </select>
+                </div>
+
+                <button class="btn tall-btn">Добавить</button>
+            </div> 
+            <button id="back-btn" class="btn btn-light back-btn">Назад</button>
+        </div>
+
+    </div>
+
+    <div class="girl-back"></div>
+    <div class="girl"></div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        const func = () => {
+            $.getJSON("todos.json" , function (data) {
+                main(data)
+            })
+        }
+
+        var main = function (data) {
+            data.forEach(function (element) {
+                const task = document.createElement('li')
+                task.innerHTML = element.description
+                document.getElementById('content-new-tab').appendChild(task)
+                
+                const oldtask = document.createElement('li')
+                oldtask.innerHTML = element.description
+                document.getElementById('content-old-tab').appendChild(oldtask)
+                
+                const arrTags = element.tags
+                for (let i = 0; i < arrTags.length; i += 1) {
+                    if (allTags.indexOf(arrTags[i]) === -1) {
+                        allTags.push(arrTags[i])
+                    }
+                }
+            })
+
+            console.log(allTags)
+
+            allTags.map((tag) => {
+                const tagH3 = document.createElement('h4')
+                tagH3.innerHTML = tag
+                document.getElementById('content-tag-tab').appendChild(tagH3)
+                const newUl = document.createElement('ul')
+                newUl.id = tag
+                document.getElementById('content-tag-tab').appendChild(newUl)
+                data.forEach(function (element) {
+                    const arrTags = element.tags
+                    for (let i = 0; i < arrTags.length; i += 1) {
+                        if (arrTags[i] === tag) {
+                            const tagTask = document.createElement('li')
+                            tagTask.innerHTML = element.description
+                            document.getElementById(`${arrTags[i]}`).appendChild(tagTask)
+                        }
+                    }
+                });
+            }
+            )
+            
+            $("#btn").one("click", function () {
+                var description = $("#text-for-task").val(),
+                tags = $("#tag-text").val().split(","),
+                newToDo = {"description":description, "tags":tags}
+                data.push(newToDo);
+
+                $.post("todos", newToDo, function (result) {
+                    console.log("Мы отправили данные и получили ответ сервера!");
+                    console.log(result);
+                    data.push(newToDo);
+
+                })
+                toDos = data.map(function (toDo) {
+                    return toDo.description;
+                });
+
+                $("#text-for-task").val("")
+                $("#tag-text").val("")
+                console.log("SERVER: ", data)
+
+            })
+        }
+        $(document).ready(func);
+    </script>
+    
+    <script src="index.js"></script>
+
+</body>
+</html>
