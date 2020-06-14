@@ -17,15 +17,6 @@
 	</header>
 
 	<div class="content">
-		<!-- <div class="content-login-student hide">
-			<h2 class="content-title">Добавить студента</h2>
-			<div class="line"></div>
-			<div class="add-form login-add-form">
-				<input class="add-input" type="text" placeholder="Ник">
-				<input class="add-input" type="text" placeholder="ФИО">
-				<button class="btn tall-btn">Войти</button>
-			</div>
-		</div> -->
 
 		<div id='content-student-menu' class="content-tab content-menu-student">
 			<h2 class="content-title">Мой номер</h2>
@@ -53,11 +44,8 @@
 			<div class="line"></div>
 			<div class="add-form">
 				<div class="inputs">
-					<select class="add-select">
+					<select id='add-select' class="add-select">
 						<option selected="selected">Выберите направление</option>
-						<option value="msk">Программная Инженеря</option>
-						<option value="spb">Информационная безопасность</option>
-						<option value="other">Прикладная математика и информатика</option>
 					</select>
 				</div>
 		
@@ -70,8 +58,31 @@
 
 	<div class="girl-back"></div>
 	<div class="girl"></div>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<script src="js/student.js"></script>
+<script>
 
+	const func = () => {
+		$.getJSON("/directions.json", function (data) {
+			console.log(data)
+			main(data)
+		})
+	}
+
+	var main = function (data) {
+		data.forEach(function (element) {
+			const direction = document.createElement('option')
+			direction.innerHTML = element.name
+			document.getElementById('add-select').appendChild(direction)
+
+			if (allDirections.indexOf(element.name) === -1) {
+				allDirections.push(element.name)
+			}
+		})
+	}
+	$(document).ready(func);
+</script>
 </body>
 
 </html>

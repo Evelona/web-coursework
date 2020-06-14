@@ -26,11 +26,11 @@
            <h2 class="content-title">Открыть список студентов</h2>
            <div class="line"></div>
            <ul id="stud-list" class="stud-list">
-               <h4 class="stud-list-heading">Программная Инженеря</h4>
+               <!-- <h4 class="stud-list-heading">Программная Инженеря</h4>
                 <ul>
                     <li class="stud-list-element">Тумби</li>
                     <li class="stud-list-element">Тумби</li>
-                </ul>
+                </ul> -->
            </ul>
            <button class="btn btn-light back-btn">Назад</button>
         </div>
@@ -40,16 +40,13 @@
             <div class="line"></div>
             <div class="add-form">
                 <div class="inputs">
-                    <input class="add-input" type="text" placeholder="ФИО">
-                    <select class="add-select">
+                    <input id='student-fio-input' class="add-input" type="text" placeholder="ФИО">
+                    <select id="add-select" class="add-select">
                         <option selected="selected">Выберите направление</option>
-                        <option value="msk">Программная Инженеря</option>
-                        <option value="spb">Информационная безопасность</option>
-                        <option value="other">Прикладная математика и информатика</option>
                     </select>
                 </div>
 
-                <button class="btn tall-btn">Добавить</button>
+                <button id='btn' class="btn tall-btn">Добавить</button>
             </div> 
             <button class="btn btn-light back-btn">Назад</button>
         </div>
@@ -65,69 +62,77 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>
+
         const func = () => {
-            $.getJSON("todos.json" , function (data) {
+            $.getJSON("/directions.json" , function (data) {
                 main(data)
             })
         }
 
         var main = function (data) {
             data.forEach(function (element) {
-                const task = document.createElement('li')
-                task.innerHTML = element.description
-                document.getElementById('content-new-tab').appendChild(task)
-                
-                const oldtask = document.createElement('li')
-                oldtask.innerHTML = element.description
-                document.getElementById('content-old-tab').appendChild(oldtask)
-                
-                const arrTags = element.tags
-                for (let i = 0; i < arrTags.length; i += 1) {
-                    if (allTags.indexOf(arrTags[i]) === -1) {
-                        allTags.push(arrTags[i])
-                    }
+                const direction = document.createElement('option')
+                direction.innerHTML = element.name
+                document.getElementById('add-select').appendChild(direction)
+            
+                if (allDirections.indexOf(element.name) === -1) {
+                    allDirections.push(element.id)
                 }
             })
 
-            console.log(allTags)
+            console.log(allDirections)
 
-            allTags.map((tag) => {
-                const tagH3 = document.createElement('h4')
-                tagH3.innerHTML = tag
-                document.getElementById('content-tag-tab').appendChild(tagH3)
+            data.map((direction) => {
+                console.log('d: ', direction)
+                const directionH4 = document.createElement('h4')
+                directionH4.innerHTML = direction.name
+                document.getElementById('stud-list').appendChild(directionH4)
                 const newUl = document.createElement('ul')
-                newUl.id = tag
-                document.getElementById('content-tag-tab').appendChild(newUl)
-                data.forEach(function (element) {
-                    const arrTags = element.tags
-                    for (let i = 0; i < arrTags.length; i += 1) {
-                        if (arrTags[i] === tag) {
-                            const tagTask = document.createElement('li')
-                            tagTask.innerHTML = element.description
-                            document.getElementById(`${arrTags[i]}`).appendChild(tagTask)
+                newUl.id = direction.id
+                document.getElementById('stud-list').appendChild(newUl)
+
+
+                allDirections.map((directionId) => {
+                    if (directionId === direction.id) {
+                        for (let i = 0; i < direction.students.length; i++) {
+                            const stud = document.createElement('li')
+                            stud.innerHTML = direction.students[i]
+                            stud.classList.add("stud-list-element")
+                            document.getElementById(`${directionId}`).appendChild(stud)
                         }
                     }
-                });
+                })
+
+                // allDirections.forEach(function (element) {
+                //     for (let j = 0; j < direction.students.length; j++) {
+                //         if (allDirections[i] === element.id) {
+                //                 const stud = document.createElement('li')
+                //                 stud.innerHTML = element.students
+                //                 document.getElementById(`${allDirections[i]}`).appendChild(stud)
+                //             }
+                //         }
+                //     }
+                // });
             }
             )
             
             $("#btn").one("click", function () {
-                var description = $("#text-for-task").val(),
-                tags = $("#tag-text").val().split(","),
-                newToDo = {"description":description, "tags":tags}
-                data.push(newToDo);
+                const fio = $('#student-fio-input').val()
+                var direction = $("#add-select").text(),
+                newSend = {"name": direction, "student": fio}
+                data.push(newSend);
 
-                $.post("todos", newToDo, function (result) {
+                $.post("todos", newSend, function (result) {
                     console.log("Мы отправили данные и получили ответ сервера!");
                     console.log(result);
-                    data.push(newToDo);
+                    data.push(newSend);
 
                 })
                 toDos = data.map(function (toDo) {
                     return toDo.description;
                 });
 
-                $("#text-for-task").val("")
+                $("#student-fio-input").val("")
                 $("#tag-text").val("")
                 console.log("SERVER: ", data)
 

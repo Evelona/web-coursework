@@ -1,6 +1,3 @@
-const tabHref = document.getElementsByClassName('content-tab')
-console.log(tabHref.length)
-tabHref.values
 
 function showContent(tab) {
     const lable = `content-${tab}`
@@ -24,33 +21,35 @@ studButton.addEventListener("click", () => location.href = 'admin')
 
 
 
-const btn = document.getElementById('btn')
-let allTags = []
-btn.onclick = () => {
 
-    const tagValues = document.getElementById('tag-text').value
-    const tagValue = tagValues.split(',')
+
+// const btn = document.getElementById('btn')
+let  allDirections = []
+// btn.onclick = () => {
+
+//     const tagValues = document.getElementById('tag-text').value
+//     const tagValue = tagValues.split(',')
     
-    for (let i = 0; i < tagValue.length; i += 1) {
-        // console.log(tagValue[i])
-        if(allTags.indexOf(tagValue[i]) === -1) {
-            console.log(tagValue[i])
+//     for (let i = 0; i < tagValue.length; i += 1) {
+//         // console.log(tagValue[i])
+//         if(allTags.indexOf(tagValue[i]) === -1) {
+//             console.log(tagValue[i])
 
-            const newTag = document.createElement('h4')
-            newTag.innerHTML = tagValue[i]
-            document.getElementById('content-tag-tab').appendChild(newTag)
+//             const newTag = document.createElement('h4')
+//             newTag.innerHTML = tagValue[i]
+//             document.getElementById('content-tag-tab').appendChild(newTag)
 
-            const newTagUl = document.createElement('ul')
-            newTagUl.id = tagValue[i]
-            document.getElementById('content-tag-tab').appendChild(newTagUl)
-        }
+//             const newTagUl = document.createElement('ul')
+//             newTagUl.id = tagValue[i]
+//             document.getElementById('content-tag-tab').appendChild(newTagUl)
+//         }
     
 
-        const sameTask = document.createElement('li')
-        const sameTaskTxt = document.getElementById('text-for-task').value
-        sameTask.innerHTML = sameTaskTxt ? sameTaskTxt : 'Пусто'
-        document.getElementById(`${tagValue[i]}`).appendChild(sameTask)
-    }
-}
+//         const sameTask = document.createElement('li')
+//         const sameTaskTxt = document.getElementById('text-for-task').value
+//         sameTask.innerHTML = sameTaskTxt ? sameTaskTxt : 'Пусто'
+//         document.getElementById(`${tagValue[i]}`).appendChild(sameTask)
+//     }
+// }
 
 

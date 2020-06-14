@@ -15,3 +15,6 @@ for (let i = 0; i < backButtons.length; i++) {
 }
 listButton.addEventListener("click", () => showContent('student-list'))
 addDirectButton.addEventListener("click", () => showContent('add-direction'))
+
+
+let allDirections = []
