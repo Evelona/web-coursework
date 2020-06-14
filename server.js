@@ -4,7 +4,8 @@ mongoose = require("mongoose"),
 app = express()
 
 app.use(express.static(__dirname + "/client"));
-app.use('/admin', express.static(__dirname + '/client/student.html'));
+app.use('/admin', express.static(__dirname + '/client/admin.html'));
+app.use('/auth', express.static(__dirname + '/client/student.html'));
 app.use(express.urlencoded());
 
 http.createServer(app).listen(3000);

@@ -17,7 +17,7 @@
 	</header>
 
 	<div class="content">
-		<div class="content-login-student hide">
+		<!-- <div class="content-login-student hide">
 			<h2 class="content-title">Добавить студента</h2>
 			<div class="line"></div>
 			<div class="add-form login-add-form">
@@ -25,19 +25,53 @@
 				<input class="add-input" type="text" placeholder="ФИО">
 				<button class="btn tall-btn">Войти</button>
 			</div>
-		</div>
+		</div> -->
 
-		<div class="content-menu-student">
+		<div id='content-student-menu' class="content-tab content-menu-student">
 			<h2 class="content-title">Мой номер</h2>
 			<p class="student-number">898430r9r98</p>
 			<div class="line"></div>
-			<button id="studen-list" class="btn  q-btn">Мои заявки</button>
-			<button id="add-student" class="btn btn-light new-q-btn">Новая заявка</button>
+			<button id="student-my-list" class="btn  q-btn">Мои заявки</button>
+			<button id="add-student-direction" class="btn btn-light new-q-btn">Новая заявка</button>
 		</div>
+
+		<div id="content-student-list" class="content-tab content-list hide">
+			<h2 class="content-title">Мой список заявок</h2>
+			<div class="line"></div>
+			<ul id="stud-list-direction" class="stud-list">
+				<h4 class="stud-list-heading">Мои направления</h4>
+				<ul>
+					<li class="stud-list-element">Программная Инженерия</li>
+					<li class="stud-list-element">Инфобез</li>
+				</ul>
+			</ul>
+			<button class="btn btn-light back-btn">Назад</button>
+		</div>
+
+		<div id="content-add-direction" class="content-tab content-add hide">
+			<h2 class="content-title">Добавить заявку</h2>
+			<div class="line"></div>
+			<div class="add-form">
+				<div class="inputs">
+					<select class="add-select">
+						<option selected="selected">Выберите направление</option>
+						<option value="msk">Программная Инженеря</option>
+						<option value="spb">Информационная безопасность</option>
+						<option value="other">Прикладная математика и информатика</option>
+					</select>
+				</div>
+		
+				<button class="btn tall-btn">Добавить</button>
+			</div>
+			<button class="btn btn-light back-btn">Назад</button>
+		</div>
+
 	</div>
 
 	<div class="girl-back"></div>
 	<div class="girl"></div>
+	<script src="js/student.js"></script>
+
 </body>
 
 </html>

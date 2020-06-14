@@ -20,27 +20,16 @@ for (let i = 0; i < backButtons.length; i++) {
 }
 addButton.addEventListener("click", () => showContent('add'))
 listButton.addEventListener("click", () => showContent('list'))
-studButton.addEventListener("click", () => location.href='admin')
+studButton.addEventListener("click", () => location.href = 'admin')
 
 
 
 const btn = document.getElementById('btn')
 let allTags = []
 btn.onclick = () => {
-    const newTask = document.createElement('li')
-    const txt = document.getElementById('text-for-task').value
-    newTask.innerHTML = txt ? txt : 'Пусто'
-    document.getElementById('content-new-tab').appendChild(newTask)
-    
-    const newOldTask = document.createElement('li')
-    const txtOld = document.getElementById('text-for-task').value
-    newOldTask.innerHTML = txtOld ? txtOld : 'Пусто'
-    document.getElementById('content-old-tab').appendChild(newOldTask)
 
     const tagValues = document.getElementById('tag-text').value
     const tagValue = tagValues.split(',')
-    console.log(tagValue)
-    console.log(tagValue.length)
     
     for (let i = 0; i < tagValue.length; i += 1) {
         // console.log(tagValue[i])
